@@ -1,4 +1,6 @@
 var config = {
-    mongoLocation : "localhost",
-    mongoPort : 27017
-}
+    mongoDB: "localhost",
+    mongoPort: 27017,
+    mongoCollection : "nginx"
+};
+module.exports = config;
