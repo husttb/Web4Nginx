@@ -28,3 +28,5 @@ var ConfigSchema = new mongoose.Schema({
 });
 
 var ConfigModule = db.model(config.mongoCollection, ConfigSchema);
+
+module.exports = ConfigModule;
