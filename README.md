@@ -7,11 +7,11 @@ nginx是大家都爱用的东西。在负载均衡方面也是非常好的东西
 ＊ 提供rest api及web UI重载nginx
 
 ## 环境配置
-Linux: Ubuntu 14.04/Mac OS X EI Capitan
-DB: mongodb-osx-x86_64-3.2.1
-Language: Nodejs 5.1.0
-Mid-Ware: Express 4.0+
-Frontend: Angularjs 1.0
+* Linux: Ubuntu 14.04/Mac OS X EI Capitan
+* DB: mongodb-osx-x86_64-3.2.1
+* Language: Nodejs 5.1.0
+* Mid-Ware: Express 4.0+
+* Frontend: Angularjs 1.0
 
 ## License
 [GPLV3]()
