@@ -14,16 +14,20 @@ db.connection.on("open", function () {
 
 var ConfigSchema = new mongoose.Schema({
     server_name : { type: String },//对应nginx default.conf中的server_name
-    listen  : { type: Number, default: 80 },//对应nginx default.conf中的listen,类型为Number,默认为0
+    listen_port  : { type: Number, default: 80 },//对应nginx default.conf中的listen,类型为Number,默认为0
     upstream : [{  //对应nginx作为LB时的upstream
-      upstream_name : { type: String },
-      server : { type: String },
-      port : { type: Number, default: 80 },
+      name : { type: String },
+      servers: [{
+        server : { type: String },
+        port : { type: Number, default: 80 },
+      }
+      ]
     }],
     createTime : { type: Date, default: Date.now },
-    location : [{
+    locations : [{
       path: { type: String, default:'/'},
       proxy_pass: { type: String },
+      proxy_type: { type: String, default: 'http' }
     }]
 });
 
