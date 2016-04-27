@@ -1,8 +1,13 @@
 var swig  = require('swig');
+var fs = require('fs');
 var config = require('../config/config.js');
-var json = {
-    "server_name": "test1"，
-    "listen_port": 80，
+
+var target_file_name = './tmp/default.conf';
+
+var configuration = function(res,req){
+  var json = {
+    "server_name": "test1",
+    "listen_port": 80,
     "upstreams": [{  //对应nginx作为LB时的upstream
       "upstream_name": "test_lb",
       "servers": [{
@@ -40,7 +45,16 @@ var json = {
       "proxy_type": "https"
     }
     ]
-}；
+  };
+
+  var content = swig.renderFile(config.default_template, json);
 
 
-console.log(swig.renderFile('../templates/default.conf.tmp', json));
+  fs.writeFile(target_file_name, content, function (err) {
+    if (err) throw err;
+    console.log('文件写入成功');
+  });
+  res.send('generate conf done!');
+};
+
+module.exports = configuration;

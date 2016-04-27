@@ -1,0 +1,17 @@
+{% for upstream in upstreams -%}
+upstream {{upstream.upstream_name}} {
+    {% for server in upstream.servers -%}
+    server {{server.node}}:{{server.port}};
+    {% endfor %}
+}
+{% endfor -%}
+
+server{
+    listen {{listen_port}};
+    server_name {{server_name}};
+    {% for location in locations -%}
+    location {{location.path}} {
+      proxy_pass {{location.proxy_type}}://{{location.proxy_pass}};
+    }
+    {% endfor %}
+}
